@@ -2,9 +2,9 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/2amigos/qrcode-library).
+We accept contributions via Pull Requests on [Github](https://github.com/steinhaug/qrcode-library).
 
-All contributions should follow our [templates guidelines](https://github.com/2amigos/qrcode-library/tree/master/.github)
+All contributions should follow our [templates guidelines](https://github.com/steinhaug/qrcode-library/tree/master/.github)
 
 
 ## Pull Requests
