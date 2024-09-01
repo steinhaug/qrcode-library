@@ -14,7 +14,7 @@ class ImageTraitTest extends \Codeception\Test\Unit
         $this->expectNotToPerformAssertions();
 
         $writer = new PngWriter();
-        $qrCode = (new QrCode('hola@2amigos.us'));
+        $qrCode = (new QrCode('noreply@systemweb.no'));
 
         $writer->validateResult(true);
         $writer->writeString($qrCode);
@@ -23,7 +23,7 @@ class ImageTraitTest extends \Codeception\Test\Unit
     public function testWithNoMargin()
     {
         $writer = new PngWriter();
-        $qrCode = (new QrCode('hola@2amigos.us'))
+        $qrCode = (new QrCode('noreply@systemweb.no'))
             ->setMargin(0);
 
         $out = $writer->writeString($qrCode);
@@ -33,7 +33,7 @@ class ImageTraitTest extends \Codeception\Test\Unit
 
     public function testWriteDataUri()
     {
-        $uri = (new QrCode('hola@2amigos.us'))->writeDataUri();
+        $uri = (new QrCode('noreply@systemweb.no'))->writeDataUri();
 
         $this->assertEquals(file_get_contents(codecept_data_dir('data-uri.txt')), $uri);
     }
@@ -42,7 +42,7 @@ class ImageTraitTest extends \Codeception\Test\Unit
     {
         $this->expectException(\Da\QrCode\Exception\InvalidPathException::class);
 
-        (new Label('2amigos'))
+        (new Label('systemweb'))
             ->setFont(__DIR__ . '/../../resources/fonts/invalid-font.otf')
             ->setFontSize(12);
     }
@@ -50,9 +50,9 @@ class ImageTraitTest extends \Codeception\Test\Unit
     public function testLabelAlignment()
     {
         $writer = new \Da\QrCode\Writer\PngWriter();
-        $qrCode = (new QrCode('2amigos'))
+        $qrCode = (new QrCode('systemweb'))
             ->setLabel(new Label(
-                'hola@2amigos.us',
+                'noreply@systemweb.no',
                 null,
                 null,
                 LabelInterface::ALIGN_CENTER,
@@ -60,9 +60,9 @@ class ImageTraitTest extends \Codeception\Test\Unit
         $out = $writer->writeString($qrCode);
         $this->assertEquals(file_get_contents(codecept_data_dir('data-label-center.png')), $out);
 
-        $qrCode = (new QrCode('2amigos'))
+        $qrCode = (new QrCode('systemweb'))
             ->setLabel(new Label(
-                'hola@2amigos.us',
+                'noreply@systemweb.no',
                 null,
                 null,
                 LabelInterface::ALIGN_LEFT,
@@ -71,9 +71,9 @@ class ImageTraitTest extends \Codeception\Test\Unit
         $out = $writer->writeString($qrCode);
         $this->assertEquals(file_get_contents(codecept_data_dir('data-label-left.png')), $out);
 
-        $qrCode = (new QrCode('2amigos'))
+        $qrCode = (new QrCode('systemweb'))
             ->setLabel(new Label(
-                'hola@2amigos.us',
+                'noreply@systemweb.no',
                 null,
                 null,
                 LabelInterface::ALIGN_RIGHT,
@@ -88,9 +88,9 @@ class ImageTraitTest extends \Codeception\Test\Unit
         $this->expectException('Da\QrCode\Exception\ValidationException');
 
         $writer = new PngWriter();
-        $qrCode = new QrCode('hola@2amigos.us');
+        $qrCode = new QrCode('noreply@systemweb.no');
         $imageString = $writer->writeString($qrCode);
 
-        $writer->validateOutput($imageString, $qrCode->setText('2amigos'));
+        $writer->validateOutput($imageString, $qrCode->setText('systemweb'));
     }
 }

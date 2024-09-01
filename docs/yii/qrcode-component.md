@@ -33,11 +33,11 @@ Yii::$app->response->format = Response::FORMAT_RAW;
 Yii::$app->response->headers->add('Content-Type', $qr->getContentType());
 
 return $qr
-    ->setText('https://2am.tech')
-    ->setLabel('2amigos consulting group llc')
+    ->setText('https://steinhaug.no')
+    ->setLabel('systemweb consulting group llc')
     ->writeString();
 
 ```
 
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

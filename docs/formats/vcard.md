@@ -16,7 +16,7 @@ use Da\QrCode\Format\VCardFormat;
 $format = new VCardFormat();
 $format->name = "Antonio";
 $format->fullName = "Antonio Ramirez";
-$format->email = "hola@2amigos.us";
+$format->email = "noreply@systemweb.no";
 
 $qrCode = new QrCode($format);
 
@@ -26,4 +26,4 @@ echo $qrCode->writeString();
 
 ```
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

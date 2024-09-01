@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the 2amigos/qrcode-library project.
+ * This file is part of the steinhaug/qrcode-library project.
  *
- * (c) 2amigOS! <http://2am.tech/>
+ * (c) http://2am.tech
  *
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
@@ -57,9 +57,9 @@ class FormatsTest extends \Codeception\Test\Unit
 
     public function testMailMessage()
     {
-        $message = new MailMessageFormat(['email' => 'hola@2amigos.us', 'subject' => 'test', 'body' => 'test-body']);
-        $this->tester->assertEquals('hola@2amigos.us', $message->getEmail());
-        $this->tester->assertEquals('MATMSG:TO:hola@2amigos.us;SUB:test;BODY:test-body;;', $message->getText());
+        $message = new MailMessageFormat(['email' => 'noreply@systemweb.no', 'subject' => 'test', 'body' => 'test-body']);
+        $this->tester->assertEquals('noreply@systemweb.no', $message->getEmail());
+        $this->tester->assertEquals('MATMSG:TO:noreply@systemweb.no;SUB:test;BODY:test-body;;', $message->getText());
 
         $this->tester->expectThrowable(InvalidConfigException::class, function () {
             $message = new MailMessageFormat(['email' => 'wrongaddress!!']);
@@ -68,8 +68,8 @@ class FormatsTest extends \Codeception\Test\Unit
 
     public function testMailTo()
     {
-        $mailTo = new MailToFormat(['email' => 'hola@2amigos.us']);
-        $this->tester->assertEquals('MAILTO:hola@2amigos.us', $mailTo->getText());
+        $mailTo = new MailToFormat(['email' => 'noreply@systemweb.no']);
+        $this->tester->assertEquals('MAILTO:noreply@systemweb.no', $mailTo->getText());
     }
 
     public function testMailToWrongEmail()
@@ -87,14 +87,14 @@ class FormatsTest extends \Codeception\Test\Unit
         $card->sound = 'docomotaro';
         $card->phone = '657657657';
         $card->videoPhone = '657657657';
-        $card->email = 'hola@2amigos.us';
+        $card->email = 'noreply@systemweb.no';
         $card->note = 'test-note';
         $card->birthday = '19711201';
         $card->address = 'test-address';
         $card->url = 'http://2am.tech';
         $card->nickName = 'tonydspaniard';
 
-        $expected = 'MECARD:N:Ramirez Antonio;SOUND:docomotaro;TEL:657657657;TEL-AV:657657657;EMAIL:hola@2amigos.us;' .
+        $expected = 'MECARD:N:Ramirez Antonio;SOUND:docomotaro;TEL:657657657;TEL-AV:657657657;EMAIL:noreply@systemweb.no;' .
                     'NOTE:test-note;BDAY:19711201;ADR:test-address;URL:http://2am.tech;NICKNAME:tonydspaniard;;';
         $this->tester->assertEquals($expected, $card->getText());
 
@@ -146,10 +146,10 @@ class FormatsTest extends \Codeception\Test\Unit
         $vcard = new VCardFormat();
         $vcard->name = 'Antonio';
         $vcard->fullName = 'Antonio Ramirez';
-        $vcard->setEmail('hola@2amigos.us');
+        $vcard->setEmail('noreply@systemweb.no');
 
         $expected = "BEGIN:VCARD\nVERSION:4.0\nN:Antonio\nFN:Antonio Ramirez\nADR:\nNICKNAME:\n" .
-            "EMAIL;TYPE=PREF,INTERNET:hola@2amigos.us\nTEL;TYPE=WORK:\nTEL;TYPE=HOME:\nBDAY:\n" .
+            "EMAIL;TYPE=PREF,INTERNET:noreply@systemweb.no\nTEL;TYPE=WORK:\nTEL;TYPE=HOME:\nBDAY:\n" .
             "GENDER:\nCATEGORIES:\nIMPP:\nROLE:\nURL:\nORG:\nNOTE:\n" .
             "LANG:\nEND:VCARD";
 
@@ -215,7 +215,7 @@ class FormatsTest extends \Codeception\Test\Unit
 
     public function testGettersAndSetters()
     {
-        $testEMail = 'hola@2amigos.us';
+        $testEMail = 'noreply@systemweb.no';
 
         $emailFormat = new MailToFormat();
         $emailFormat->__set('email', $testEMail);
@@ -228,7 +228,7 @@ class FormatsTest extends \Codeception\Test\Unit
     public function testGettersUnknownProperties()
     {
         $this->expectException('Da\QrCode\Exception\UnknownPropertyException');
-        $testEMail = 'hola@2amigos.us';
+        $testEMail = 'noreply@systemweb.no';
 
         $emailFormat = new MailToFormat();
         $emailFormat->setEmail($testEMail);
@@ -239,7 +239,7 @@ class FormatsTest extends \Codeception\Test\Unit
     public function testSettersUnknownProperties()
     {
         $this->expectException('Da\QrCode\Exception\UnknownPropertyException');
-        $testEMail = 'hola@2amigos.us';
+        $testEMail = 'noreply@systemweb.no';
 
         $emailFormat = new MailToFormat();
         $emailFormat->__set('userEmail', $testEMail);
@@ -249,13 +249,13 @@ class FormatsTest extends \Codeception\Test\Unit
     {
         $this->expectException('Da\QrCode\Exception\InvalidCallException');
 
-        $bookMark = new BookMarkFormat(['title' => 'test-title', 'url' => 'http://2amigos.tech']);
+        $bookMark = new BookMarkFormat(['title' => 'Steinhaug Crazy Adventure', 'url' => 'https://steinhaug.no']);
         $bookMark->__set('text', 'bookmark content');
     }
 
     public function testIsset()
     {
-        $testEMail = 'hola@2amigos.us';
+        $testEMail = 'noreply@systemweb.no';
 
         $emailFormat = new MailToFormat();
         $emailFormat->setEmail($testEMail);
@@ -271,7 +271,7 @@ class FormatsTest extends \Codeception\Test\Unit
         $this->expectException('Da\QrCode\Exception\UnknownMethodException');
 
         $emailFormat = new MailToFormat();
-        $emailFormat->setEmailAddress('hola@2amigos.us');
+        $emailFormat->setEmailAddress('noreply@systemweb.no');
     }
 
     public function testFormatPropertiesAndMethodsExistence()

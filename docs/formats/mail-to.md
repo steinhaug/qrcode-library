@@ -1,9 +1,9 @@
 MailToFormat
 ------------
 
-To encode an e-mail address like sean@example.com, one could simply encode hola@2amigos.us. However to ensure it is 
+To encode an e-mail address like sean@example.com, one could simply encode noreply@systemweb.no. However to ensure it is 
 recognized as an e-mail address, it is advisable to create a proper mailto: URI from the address: 
-`mailto:hola@2amigos.us`.
+`mailto:noreply@systemweb.no`.
 
 This class helps to enforce the above rule. 
 
@@ -15,7 +15,7 @@ Usage
 use Da\QrCode\QrCode;
 use Da\QrCode\Format\MailtoFormat; 
 
-$format = new MailToFormat(['email' => 'hola@2amigos.us']);
+$format = new MailToFormat(['email' => 'noreply@systemweb.no']);
 
 $qrCode = new QrCode($format);
 
@@ -24,4 +24,4 @@ echo $qrCode->writeString();
 
 ```
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

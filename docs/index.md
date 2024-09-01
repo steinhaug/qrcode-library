@@ -1,11 +1,11 @@
 # Qrcode Library
 
 [![Documentation Status](https://readthedocs.org/projects/qrcode-library/badge/?version=latest)](http://qrcode-library.readthedocs.io/en/latest/?badge=latest)
-[![Packagist Version](https://img.shields.io/packagist/v/2amigos/qrcode-library.svg?style=flat-square)](https://packagist.org/packages/2amigos/qrcode-library)
-[![Build Status](https://travis-ci.org/2amigos/qrcode-library.svg?branch=master)](https://travis-ci.org/2amigos/qrcode-library)
-[![Latest Stable Version](https://poser.pugx.org/2amigos/qrcode-library/version)](https://packagist.org/packages/2amigos/qrcode-library)
-[![Total Downloads](https://poser.pugx.org/2amigos/qrcode-library/downloads)](https://packagist.org/packages/2amigos/qrcode-library)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/2amigos/qrcode-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/2amigos/qrcode-library/?branch=master)
+[![Packagist Version](https://img.shields.io/packagist/v/steinhaug/qrcode-library.svg?style=flat-square)](https://packagist.org/packages/steinhaug/qrcode-library)
+[![Build Status](https://travis-ci.org/steinhaug/qrcode-library.svg?branch=master)](https://travis-ci.org/steinhaug/qrcode-library)
+[![Latest Stable Version](https://poser.pugx.org/steinhaug/qrcode-library/version)](https://packagist.org/packages/steinhaug/qrcode-library)
+[![Total Downloads](https://poser.pugx.org/steinhaug/qrcode-library/downloads)](https://packagist.org/packages/steinhaug/qrcode-library)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/steinhaug/qrcode-library/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/steinhaug/qrcode-library/?branch=master)
 
 The library provides developers with the tools to generate Qr codes with ease. It is a total refactored version of the 
 previous named yii2-qrcode-helper which was based on the ported PHP version of the libqrencode C library.  
@@ -33,14 +33,14 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require 2amigos/qrcode-library:^3.1.0
+php composer.phar require steinhaug/qrcode-library:^3.1.0
 ```
 or add
 
 ```json
 {
   ...
-  "2amigos/qrcode-library": "^3.1.0"
+  "steinhaug/qrcode-library": "^3.1.0"
 }
 ```
 
@@ -134,4 +134,4 @@ Contributing
 -  [Clean Code](contributing/clean-code.md)
 
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

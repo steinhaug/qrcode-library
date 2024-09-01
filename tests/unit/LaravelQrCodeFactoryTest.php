@@ -107,7 +107,7 @@ class LaravelQrCodeFactoryTest extends \Codeception\Test\Unit
     {
         $content = [
             'title' => '2am. Technologies',
-            'url' => 'https://2am.tech',
+            'url' => 'https://steinhaug.no',
         ];
 
         $qrCode = LaravelQrCodeFactory::make(

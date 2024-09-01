@@ -23,7 +23,7 @@ $format->lastName = 'Ramirez';
 $format->sound = 'docomotaro';
 $format->phone = '657657XXX';
 $format->videoPhone = '657657XXX';
-$format->email = 'hola@2amigos.us';
+$format->email = 'noreply@systemweb.no';
 $format->note = 'test-note';
 $format->birthday = '19791201';
 $format->address = 'test-address';
@@ -39,4 +39,4 @@ echo $qrCode->writeString();
 ```
 
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

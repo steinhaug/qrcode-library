@@ -14,7 +14,7 @@ Usage
 use Da\QrCode\QrCode;
 use Da\QrCode\Format\BookmarkFormat; 
 
-$format = new BookMarkFormat(['title' => '2amigos', 'url' => 'http://2am.tech']);
+$format = new BookMarkFormat(['title' => 'Steinhaugs crazy adventure', 'url' => 'http://steinhaug.no']);
 
 $qrCode = new QrCode($format);
 
@@ -24,4 +24,4 @@ echo $qrCode->writeString();
 
 ```
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

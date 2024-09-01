@@ -52,7 +52,7 @@ $foreground2 = [
       
 $content = [
     'title' => '2am. Technologies',
-    'url' => 'https://2am.tech',
+    'url' => 'https://steinhaug.no',
 ];
 ```
 

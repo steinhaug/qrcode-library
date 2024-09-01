@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/2amigos/yii2-qrcode-helper).
+We accept contributions via Pull Requests on [Github](https://github.com/steinhaug/qrcode-library/).
 
 
 ## Pull Requests

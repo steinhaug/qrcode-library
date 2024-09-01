@@ -20,7 +20,7 @@ class QrCodeTest extends \Codeception\Test\Unit
 
     public function testRaw()
     {
-        $qrCode = new QrCode('2amigOS');
+        $qrCode = new QrCode('systemweb');
         $out = $qrCode->writeString();
         $out = base64_encode($out);
         $expected = file_get_contents(codecept_data_dir('out.txt'));
@@ -30,7 +30,7 @@ class QrCodeTest extends \Codeception\Test\Unit
 
     public function testPng()
     {
-        $qrCode = new QrCode((new MailToFormat(['email' => 'hola@2amigos.us'])));
+        $qrCode = new QrCode((new MailToFormat(['email' => 'noreply@systemweb.no'])));
         $out = $qrCode->writeString();
         $this->tester->assertEquals(file_get_contents(codecept_data_dir('data.png')), $out);
     }
@@ -39,7 +39,7 @@ class QrCodeTest extends \Codeception\Test\Unit
     {
         return true;  // todo: try to figure out what is going on Travis and why is working locally.
         $writer = new JpgWriter();
-        $qrCode = new QrCode((new MailToFormat(['email' => 'hola@2amigos.us'])), null, $writer);
+        $qrCode = new QrCode((new MailToFormat(['email' => 'noreply@systemweb.no'])), null, $writer);
         $out = $qrCode->writeString();
 
         $this->tester->assertEquals(file_get_contents(codecept_data_dir('data.jpeg')), $out);
@@ -48,7 +48,7 @@ class QrCodeTest extends \Codeception\Test\Unit
     public function testEps()
     {
         $writer = new EpsWriter();
-        $qrCode = new QrCode((new MailToFormat(['email' => 'hola@2amigos.us'])), null, $writer);
+        $qrCode = new QrCode((new MailToFormat(['email' => 'noreply@systemweb.no'])), null, $writer);
         $out = $qrCode->writeString();
 
         $this->tester->assertEquals(
@@ -60,7 +60,7 @@ class QrCodeTest extends \Codeception\Test\Unit
     public function testSvg()
     {
         $writer = new SvgWriter();
-        $qrCode = new QrCode((new MailToFormat(['email' => 'hola@2amigos.us'])), null, $writer);
+        $qrCode = new QrCode((new MailToFormat(['email' => 'noreply@systemweb.no'])), null, $writer);
         $out = $qrCode->writeString();
 
         $this->tester->assertEquals(
@@ -71,7 +71,7 @@ class QrCodeTest extends \Codeception\Test\Unit
 
     public function testLogo()
     {
-        $out = (new QrCode(strtoupper('https://2am.tech'), ErrorCorrectionLevelInterface::HIGH))
+        $out = (new QrCode(strtoupper('https://steinhaug.no'), ErrorCorrectionLevelInterface::HIGH))
             ->setLogo(codecept_data_dir('logo.png'))
             ->writeString();
 
@@ -82,26 +82,26 @@ class QrCodeTest extends \Codeception\Test\Unit
     {
         $this->expectException('Da\QrCode\Exception\InvalidPathException');
 
-        (new QrCode(strtoupper('https://2am.tech'), ErrorCorrectionLevelInterface::HIGH))
+        (new QrCode(strtoupper('https://steinhaug.no'), ErrorCorrectionLevelInterface::HIGH))
             ->setLogo(codecept_data_dir('testing_logo.png'))
             ->writeString();
     }
 
     public function testSetOutputFormat()
     {
-        $png = (new QrCode('https://2am.tech'))
+        $png = (new QrCode('https://steinhaug.no'))
             ->setWriter(new \Da\QrCode\Writer\PngWriter())
             ->writeString();
 
-        $jpeg = (new QrCode('https://2am.tech'))
+        $jpeg = (new QrCode('https://steinhaug.no'))
             ->setWriter(new \Da\QrCode\Writer\JpgWriter())
             ->writeString();
 
-        $svg = (new QrCode('https://2am.tech'))
+        $svg = (new QrCode('https://steinhaug.no'))
             ->setWriter(new \Da\QrCode\Writer\SvgWriter())
             ->writeString();
 
-        $eps = (new QrCode('https://2am.tech'))
+        $eps = (new QrCode('https://steinhaug.no'))
             ->setWriter(new \Da\QrCode\Writer\EpsWriter())
             ->writeString();
         file_put_contents(codecept_data_dir('writers/qrcode.eps'), $this->normalizeString($eps));
@@ -121,7 +121,7 @@ class QrCodeTest extends \Codeception\Test\Unit
     {
         $label = new Label('2am.tech');
 
-        (new QrCode(strtoupper('https://2am.tech'), ErrorCorrectionLevelInterface::HIGH))
+        (new QrCode(strtoupper('https://steinhaug.no'), ErrorCorrectionLevelInterface::HIGH))
             ->setLabel($label)
             ->writeFile(codecept_data_dir('data-label-new.png'));
         $out = file_get_contents(codecept_data_dir('data-label-new.png'));
@@ -132,7 +132,7 @@ class QrCodeTest extends \Codeception\Test\Unit
 
     public function testQrColored()
     {
-        $qrCode = new QrCode((new MailToFormat(['email' => 'hola@2amigos.us'])));
+        $qrCode = new QrCode((new MailToFormat(['email' => 'noreply@systemweb.no'])));
         $out = $qrCode
             ->setForegroundColor(51, 153, 255)
             ->writeString();
@@ -149,7 +149,7 @@ class QrCodeTest extends \Codeception\Test\Unit
             ->setEncoding('UTF-8')
             ->setErrorCorrectionLevel(ErrorCorrectionLevelInterface::HIGH)
             ->setLogoWidth(60)
-            ->setText('https://2am.tech')
+            ->setText('https://steinhaug.no')
             ->setSize(300)
             ->setMargin(5);
 
@@ -165,7 +165,7 @@ class QrCodeTest extends \Codeception\Test\Unit
         $this->tester->assertEquals('UTF-8', $qrCode->getEncoding());
         $this->tester->assertEquals(ErrorCorrectionLevelInterface::HIGH, $qrCode->getErrorCorrectionLevel());
         $this->tester->assertEquals(60, $qrCode->getLogoWidth());
-        $this->tester->assertEquals('https://2am.tech', $qrCode->getText());
+        $this->tester->assertEquals('https://steinhaug.no', $qrCode->getText());
         $this->tester->assertEquals('image/png', $qrCode->getContentType());
 
         $out = $qrCode->writeString();
@@ -175,11 +175,11 @@ class QrCodeTest extends \Codeception\Test\Unit
 
     public function testLabelAttributes()
     {
-        $label = (new Label('2amigos'))
+        $label = (new Label('systemweb'))
             ->setFont(__DIR__ . '/../../resources/fonts/monsterrat.otf')
             ->setFontSize(12);
 
-        $this->tester->assertEquals('2amigos', $label->getText());
+        $this->tester->assertEquals('systemweb', $label->getText());
         $this->tester->assertEquals(LabelInterface::ALIGN_CENTER, $label->getAlignment());
         $margins = $label->getMargins();
         $this->tester->assertEquals(0, $margins['t']);

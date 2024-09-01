@@ -64,7 +64,7 @@ class WriterTest extends \Codeception\Test\Unit
     public function testWriterDataUri()
     {
         $writer = WriterFactory::fromName('png');
-        $qrCode = new QrCode('hola@2amigos.us');
+        $qrCode = new QrCode('noreply@systemweb.no');
 
         $out = $writer->writeDataUri($qrCode);
         $this->assertEquals(file_get_contents(codecept_data_dir('uri.txt')), $out);

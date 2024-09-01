@@ -16,11 +16,11 @@ Remembering that fact, we can configure and use our instance like this:
 // A label can be a string OR a Da\Contracts\LabelInterface instance. 
 // Using the instance, we will have more control on how do we want the label to be displayed.
 // Immutability also applies to this class! 
-$label = (new Label('2amigos'))
+$label = (new Label('systemweb'))
     ->setFont(__DIR__ . '/../resources/fonts/monsterrat.otf')
     ->setFontSize(12);
 
-$qrCode = (new QrCode('https://2am.tech'))
+$qrCode = (new QrCode('https://steinhaug.no'))
     ->setLogo(__DIR__ . '/data/logo.png')
     ->setForegroundColor(51, 153, 255)
     ->setBackgroundColor(200, 220, 210)
@@ -40,7 +40,7 @@ keeping a square shaped pattern. You can choose to scale the height
 instead:
 
 ```PHP
-$qrCode = (new QrCode('https://2am.tech'))
+$qrCode = (new QrCode('https://steinhaug.no'))
     ->setLogo(__DIR__ . '/data/logo.png')
     ->setLogoWidth(48)
     ->setScaleLogoHeight(false);
@@ -54,7 +54,7 @@ When you do this, the color you've set for the foreground using `setForegroundCo
 function will be taken as the start point for the gradient color.
 
 ```PHP
-$qrCode = (new QrCode('https://2am.tech'))
+$qrCode = (new QrCode('https://steinhaug.no'))
     ->setForegroundColor(0, 255, 0, 70)
     ->setForegroundEndColor(0, 0, 255, 50);
 ```
@@ -71,7 +71,7 @@ The available types are:
 * \Da\QrCode\Contracts\ColorsInterface::GRADIENT_INVERSE_DIAGONAL
 
 ```PHP
-$qrCode = (new QrCode('https://2am.tech'))
+$qrCode = (new QrCode('https://steinhaug.no'))
     ->setForegroundColor(0, 255, 0, 70)
     ->setForegroundEndColor(0, 0, 255, 50)
     ->setGradientType(\Da\QrCode\Contracts\ColorsInterface::GRADIENT_DIAGONAL);
@@ -87,14 +87,14 @@ styles are the following:
 * \Da\QrCode\Contracts\PathStyleInterface::ROUNDED; 
 
 ```PHP
-$qrCode = (new QrCode('https://2am.tech'))
+$qrCode = (new QrCode('https://steinhaug.no'))
     ->setPathStyle(\Da\QrCode\Contracts\PathStyleInterface::ROUNDED);
 ```
 
 You can also set the intensity for the pattern appliance:
 
 ```PHP
-$qrCode = (new QrCode('https://2am.tech'))
+$qrCode = (new QrCode('https://steinhaug.no'))
     ->setPathStyle(\Da\QrCode\Contracts\PathStyleInterface::ROUNDED)
     ->setPathIntensity(0.7);
 ```
@@ -102,4 +102,4 @@ $qrCode = (new QrCode('https://2am.tech'))
 The default value for the intensity is 1. It must be a number between 0 and 1,
 otherwise an exception will be thrown.
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

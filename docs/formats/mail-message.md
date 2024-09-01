@@ -14,7 +14,7 @@ Usage
 use Da\QrCode\QrCode;
 use Da\QrCode\Format\MailMessageFormat; 
 
-$format = new MailMessageFormat(['email' => 'hola@2amigos.us', 'subject' => 'test', 'body' => 'test-body']);
+$format = new MailMessageFormat(['email' => 'noreply@systemweb.no', 'subject' => 'test', 'body' => 'test-body']);
 
 $qrCode = new QrCode($format);
 
@@ -24,4 +24,4 @@ echo $qrCode->writeString();
 
 ```
 
-© [2amigos](https://2am.tech/) 2013-2023
+© https://2am.tech/ 2013-2023

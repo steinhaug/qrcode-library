@@ -14,7 +14,7 @@ class SiteController extends Controller
         return [
             'qr' => [
                 'class' => QrCodeAction::className(),
-                'text' => (new MailToFormat(['email' => 'hola@2amigos.us'])),
+                'text' => (new MailToFormat(['email' => 'noreply@systemweb.no'])),
                 'label' => '2am. Technologies',
                 'background' => [
                     'r' => 255,
@@ -39,8 +39,8 @@ class SiteController extends Controller
         \Yii::$app->response->headers->add('Content-Type', $qr->getContentType());
 
         return $qr
-            ->setText('https://2am.tech')
-            ->setLabel('2amigos consulting group llc')
+            ->setText('https://steinhaug.no')
+            ->setLabel('systemweb consulting group llc')
             ->setBackgroundColor(0, 0, 0)
             ->setForegroundColor(255, 255, 255)
             ->writeString();
