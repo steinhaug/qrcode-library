@@ -2,6 +2,7 @@
 
 namespace Da\QrCode\Controllers;
 
+use Da\QrCode\Exception\ValidationException;
 use Da\QrCode\Factory\LaravelQrCodeFactory;
 use Illuminate\Http\Request;
 use Exception;
@@ -12,7 +13,7 @@ final class LaravelResourceController
      * @param Request $request
      * @return \Illuminate\Http\Response
      * @throws Exception
-     * @throws \Da\QrCode\Exception\ValidationException
+     * @throws ValidationException
      */
     public function __invoke(Request $request)
     {

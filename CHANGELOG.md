@@ -1,5 +1,9 @@
 # CHANGELOG
 
+
+## 1.1.5 - PHP 8.2
+- Source code has been upgraded for PHP 8.2
+
 ## 1.1.3 - Work in progress
 - Fix #24: MeCard does not allow line breaks (Thoulah) 
 

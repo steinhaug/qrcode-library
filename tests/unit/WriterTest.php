@@ -2,6 +2,8 @@
 
 namespace unit;
 
+use Codeception\Test\Unit;
+use Da\QrCode\Exception\UnknownWriterException;
 use Da\QrCode\Factory\WriterFactory;
 use Da\QrCode\QrCode;
 use Da\QrCode\Writer\EpsWriter;
@@ -9,7 +11,7 @@ use Da\QrCode\Writer\JpgWriter;
 use Da\QrCode\Writer\PngWriter;
 use Da\QrCode\Writer\SvgWriter;
 
-class WriterTest extends \Codeception\Test\Unit
+class WriterTest extends Unit
 {
     public function testAbstractFactoryPng()
     {
@@ -41,7 +43,7 @@ class WriterTest extends \Codeception\Test\Unit
 
     public function testAbstractFactoryInvalidWriter()
     {
-        $this->expectException('Da\QrCode\Exception\UnknownWriterException');
+        $this->expectException(UnknownWriterException::class);
 
         WriterFactory::fromName('bmp');
     }

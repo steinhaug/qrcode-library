@@ -1,13 +1,15 @@
 <?php
 
 namespace unit;
+use Codeception\Test\Unit;
+use Exception;
 use Da\QrCode\Enums\Format;
 use Da\QrCode\Enums\Gradient;
 use Da\QrCode\Factory\LaravelQrCodeFactory;
 use Da\QrCode\QrCode;
 use Da\QrCode\Writer\PngWriter;
 
-class LaravelQrCodeFactoryTest extends \Codeception\Test\Unit
+class LaravelQrCodeFactoryTest extends Unit
 {
     protected $tester;
 
@@ -27,7 +29,7 @@ class LaravelQrCodeFactoryTest extends \Codeception\Test\Unit
 
     public function testInvalidQrCodeFormatInvalidClass()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
 
         LaravelQrCodeFactory::make('2am. Technologies', PngWriter::class);
     }

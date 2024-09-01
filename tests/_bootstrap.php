@@ -7,7 +7,7 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 $dir = __DIR__ . '/..';
 while (!file_exists($dir . '/vendor/autoload.php')) {
     if ($dir == dirname($dir)) {
-        throw new \Exception('Failed to locate autoload.php');
+        throw new Exception('Failed to locate autoload.php');
     }
     $dir = dirname($dir);
 }

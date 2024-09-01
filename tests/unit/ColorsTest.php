@@ -2,6 +2,8 @@
 
 namespace unit;
 
+use Codeception\Test\Unit;
+use Exception;
 use BaconQrCode\Renderer\Color\Rgb;
 use Da\QrCode\Contracts\ColorsInterface;
 use Da\QrCode\Enums\Gradient;
@@ -12,7 +14,7 @@ use Da\QrCode\Writer\JpgWriter;
 use Da\QrCode\Writer\PngWriter;
 use Da\QrCode\Writer\SvgWriter;
 
-class ColorsTest extends \Codeception\Test\Unit
+class ColorsTest extends Unit
 {
     public function testEpsUniform()
     {
@@ -117,14 +119,14 @@ class ColorsTest extends \Codeception\Test\Unit
 
     public function testInvalidForegroundColorShouldThrowException()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
 
         new StyleManager('x', 'y');
     }
 
     public function testInvalidForegroundEndColorShouldThrowException()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
 
         (new StyleManager(
             new Rgb(0,0,0), new Rgb(255,255,255)
@@ -133,7 +135,7 @@ class ColorsTest extends \Codeception\Test\Unit
 
     public function testInvalidBackgroundColorShouldThrowException()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
 
         (new StyleManager(
             new Rgb(0,0,0), new Rgb(255,255,255)

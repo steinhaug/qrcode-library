@@ -1,16 +1,21 @@
 <?php
 
 namespace unit;
-class PathTest extends \Codeception\Test\Unit
+
+use Codeception\Test\Unit;
+use Da\QrCode\QrCode;
+use Da\QrCode\Contracts\PathStyleInterface;
+
+class PathTest extends Unit
 {
     public function testRoundedPath()
     {
-        $rounded = (new \Da\QrCode\QrCode('2am Technologies'))
-            ->setPathStyle(\Da\QrCode\Contracts\PathStyleInterface::ROUNDED)
+        $rounded = (new QrCode('2am Technologies'))
+            ->setPathStyle(PathStyleInterface::ROUNDED)
             ->writeString();
         file_put_contents(codecept_data_dir('path/rounded.png'), $rounded);
-        $rounded2 = (new \Da\QrCode\QrCode('2am Technologies'))
-            ->setPathStyle(\Da\QrCode\Contracts\PathStyleInterface::ROUNDED)
+        $rounded2 = (new QrCode('2am Technologies'))
+            ->setPathStyle(PathStyleInterface::ROUNDED)
             ->setPathIntensity(0.7)
             ->writeString();
         file_put_contents(codecept_data_dir('path/rounded2.png'), $rounded2);
@@ -27,13 +32,13 @@ class PathTest extends \Codeception\Test\Unit
 
     public function testDotsPath()
     {
-        $dots = (new \Da\QrCode\QrCode('2am Technologies'))
-            ->setPathStyle(\Da\QrCode\Contracts\PathStyleInterface::DOTS)
+        $dots = (new QrCode('2am Technologies'))
+            ->setPathStyle(PathStyleInterface::DOTS)
             ->writeString();
         file_put_contents(codecept_data_dir('path/dots.png'), $dots);
 
-        $dots2 = (new \Da\QrCode\QrCode('2am Technologies'))
-            ->setPathStyle(\Da\QrCode\Contracts\PathStyleInterface::DOTS)
+        $dots2 = (new QrCode('2am Technologies'))
+            ->setPathStyle(PathStyleInterface::DOTS)
             ->setPathIntensity(0.7)
             ->writeString();
         file_put_contents(codecept_data_dir('path/dots2.png'), $dots2);

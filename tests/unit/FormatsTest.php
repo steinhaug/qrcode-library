@@ -8,7 +8,10 @@
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
-
+use Codeception\Test\Unit;
+use Da\QrCode\Exception\UnknownPropertyException;
+use Da\QrCode\Exception\InvalidCallException;
+use Da\QrCode\Exception\UnknownMethodException;
 use Da\QrCode\Exception\InvalidConfigException;
 use Da\QrCode\Format\BookMarkFormat;
 use Da\QrCode\Format\BtcFormat;
@@ -24,7 +27,7 @@ use Da\QrCode\Format\VCardFormat;
 use Da\QrCode\Format\WifiFormat;
 use Da\QrCode\Format\YoutubeFormat;
 
-class FormatsTest extends \Codeception\Test\Unit
+class FormatsTest extends Unit
 {
     /**
      * @var UnitTester
@@ -227,7 +230,7 @@ class FormatsTest extends \Codeception\Test\Unit
 
     public function testGettersUnknownProperties()
     {
-        $this->expectException('Da\QrCode\Exception\UnknownPropertyException');
+        $this->expectException(UnknownPropertyException::class);
         $testEMail = 'noreply@systemweb.no';
 
         $emailFormat = new MailToFormat();
@@ -238,7 +241,7 @@ class FormatsTest extends \Codeception\Test\Unit
 
     public function testSettersUnknownProperties()
     {
-        $this->expectException('Da\QrCode\Exception\UnknownPropertyException');
+        $this->expectException(UnknownPropertyException::class);
         $testEMail = 'noreply@systemweb.no';
 
         $emailFormat = new MailToFormat();
@@ -247,7 +250,7 @@ class FormatsTest extends \Codeception\Test\Unit
 
     public function testSetReadOnlyProperties()
     {
-        $this->expectException('Da\QrCode\Exception\InvalidCallException');
+        $this->expectException(InvalidCallException::class);
 
         $bookMark = new BookMarkFormat(['title' => 'Steinhaug Crazy Adventure', 'url' => 'https://steinhaug.no']);
         $bookMark->__set('text', 'bookmark content');
@@ -268,7 +271,7 @@ class FormatsTest extends \Codeception\Test\Unit
 
     public function testCallInvalidMethod()
     {
-        $this->expectException('Da\QrCode\Exception\UnknownMethodException');
+        $this->expectException(UnknownMethodException::class);
 
         $emailFormat = new MailToFormat();
         $emailFormat->setEmailAddress('noreply@systemweb.no');

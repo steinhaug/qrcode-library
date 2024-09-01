@@ -2,10 +2,12 @@
 
 namespace Da\QrCode\Dto;
 
+use GdImage;
+
 class LogoDto
 {
     /**
-     * @var \GdImage
+     * @var GdImage
      */
     private $image;
     /**
@@ -35,7 +37,7 @@ class LogoDto
     }
 
     /**
-     * @param \GdImage $image
+     * @param GdImage $image
      * @param int $width
      * @param int $height
      * @param int $targetWidth
@@ -48,7 +50,7 @@ class LogoDto
     }
 
     /**
-     * @return \GdImage
+     * @return GdImage
      */
     public function image()
     {

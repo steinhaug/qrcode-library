@@ -1,17 +1,19 @@
 <?php
 
+use Da\QrCode\Component\QrCodeComponent;
+
 return [
     'id' => 'yii2-qr-test-web',
     'basePath' => dirname(__DIR__),
     'language' => 'en-US',
     'aliases' => [
-        '@tests' => dirname(dirname(__DIR__)),
+        '@tests' => dirname(__DIR__, 2),
         '@vendor' => VENDOR_DIR,
         '@bower' => VENDOR_DIR . '/bower',
     ],
     'components' => [
         'qr' => [
-            'class' => '\Da\QrCode\Component\QrCodeComponent',
+            'class' => QrCodeComponent::class,
         ],
         'assetManager' => [
             'basePath' => __DIR__ . '/../assets',

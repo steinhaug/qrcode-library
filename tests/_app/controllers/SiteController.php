@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Yii;
 use Da\QrCode\Action\QrCodeAction;
 use Da\QrCode\Format\MailToFormat;
 use yii\web\Controller;
@@ -33,10 +34,10 @@ class SiteController extends Controller
 
     public function actionComponent()
     {
-        $qr = \Yii::$app->get('qr');
+        $qr = Yii::$app->get('qr');
 
-        \Yii::$app->response->format = Response::FORMAT_RAW;
-        \Yii::$app->response->headers->add('Content-Type', $qr->getContentType());
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', $qr->getContentType());
 
         return $qr
             ->setText('https://steinhaug.no')

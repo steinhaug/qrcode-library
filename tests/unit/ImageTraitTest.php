@@ -2,12 +2,15 @@
 
 namespace unit;
 
+use Codeception\Test\Unit;
+use Da\QrCode\Exception\InvalidPathException;
+use Da\QrCode\Exception\ValidationException;
 use Da\QrCode\Contracts\LabelInterface;
 use Da\QrCode\Label;
 use Da\QrCode\QrCode;
 use Da\QrCode\Writer\PngWriter;
 
-class ImageTraitTest extends \Codeception\Test\Unit
+class ImageTraitTest extends Unit
 {
     public function testWithValidateResult()
     {
@@ -40,7 +43,7 @@ class ImageTraitTest extends \Codeception\Test\Unit
 
     public function testSetFontInvalidPath()
     {
-        $this->expectException(\Da\QrCode\Exception\InvalidPathException::class);
+        $this->expectException(InvalidPathException::class);
 
         (new Label('systemweb'))
             ->setFont(__DIR__ . '/../../resources/fonts/invalid-font.otf')
@@ -49,7 +52,7 @@ class ImageTraitTest extends \Codeception\Test\Unit
 
     public function testLabelAlignment()
     {
-        $writer = new \Da\QrCode\Writer\PngWriter();
+        $writer = new PngWriter();
         $qrCode = (new QrCode('systemweb'))
             ->setLabel(new Label(
                 'noreply@systemweb.no',
@@ -85,7 +88,7 @@ class ImageTraitTest extends \Codeception\Test\Unit
 
     public function testValidateImageStringOutput()
     {
-        $this->expectException('Da\QrCode\Exception\ValidationException');
+        $this->expectException(ValidationException::class);
 
         $writer = new PngWriter();
         $qrCode = new QrCode('noreply@systemweb.no');

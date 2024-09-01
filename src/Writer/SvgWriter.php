@@ -158,17 +158,11 @@ class SvgWriter extends AbstractWriter
 
         $labelY = max(($qrCodeOriginalHeight + $blockSize) - $labelMargin['b'], $qrCodeOriginalHeight + 4);
 
-        switch ($labelAlignment) {
-            case LabelInterface::ALIGN_LEFT:
-                $labelX = $labelMargin['l'];
-                break;
-            case LabelInterface::ALIGN_RIGHT:
-                $labelX = $qrCodeOriginalWidth - $labelBoxWidth + $labelMargin['r'] * 2;
-                break;
-            default:
-                $labelX = (int)($qrCodeOriginalWidth / 2 - $labelBoxWidth / 2.6);
-                break;
-        }
+        $labelX = match ($labelAlignment) {
+            LabelInterface::ALIGN_LEFT => $labelMargin['l'],
+            LabelInterface::ALIGN_RIGHT => $qrCodeOriginalWidth - $labelBoxWidth + $labelMargin['r'] * 2,
+            default => (int)($qrCodeOriginalWidth / 2 - $labelBoxWidth / 2.6),
+        };
 
         $labelNode = $svg->addChild('text', $labelText);
         $labelNode->addAttribute('x', $labelX);

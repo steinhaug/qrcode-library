@@ -95,7 +95,7 @@ class StyleManager implements PathStyleInterface, ColorsInterface
     /**
      * @param Alpha|Rgb $color
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function setForegroundEndColor($color): void
     {
@@ -179,18 +179,13 @@ class StyleManager implements PathStyleInterface, ColorsInterface
      */
     public function getGradientTye()
     {
-        switch ($this->gradientType) {
-            case GradientEnum::GRADIENT_DIAGONAL:
-                return GradientType::DIAGONAL();
-            case GradientEnum::GRADIENT_INVERSE_DIAGONAL:
-                return GradientType::INVERSE_DIAGONAL();
-            case GradientEnum::GRADIENT_HORIZONTAL:
-                return GradientType::HORIZONTAL();
-            case GradientEnum::GRADIENT_RADIAL:
-                return GradientType::RADIAL();
-            default:
-                return GradientType::VERTICAL();
-        }
+        return match ($this->gradientType) {
+            GradientEnum::GRADIENT_DIAGONAL => GradientType::DIAGONAL(),
+            GradientEnum::GRADIENT_INVERSE_DIAGONAL => GradientType::INVERSE_DIAGONAL(),
+            GradientEnum::GRADIENT_HORIZONTAL => GradientType::HORIZONTAL(),
+            GradientEnum::GRADIENT_RADIAL => GradientType::RADIAL(),
+            default => GradientType::VERTICAL(),
+        };
     }
 
     /**
@@ -256,14 +251,11 @@ class StyleManager implements PathStyleInterface, ColorsInterface
      */
     public function buildModule()
     {
-        switch ($this->getPathStyle()) {
-            case PathStyleInterface::DOTS:
-                return new DotsModule($this->getIntensity());
-            case PathStyleInterface::ROUNDED:
-                return new RoundnessModule($this->getIntensity());
-            default:
-                return SquareModule::instance();
-        }
+        return match ($this->getPathStyle()) {
+            PathStyleInterface::DOTS => new DotsModule($this->getIntensity()),
+            PathStyleInterface::ROUNDED => new RoundnessModule($this->getIntensity()),
+            default => SquareModule::instance(),
+        };
     }
 
     /**

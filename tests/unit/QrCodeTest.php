@@ -1,5 +1,8 @@
 <?php
 
+use Codeception\Test\Unit;
+use Da\QrCode\Exception\InvalidPathException;
+use Da\QrCode\Writer\PngWriter;
 use BaconQrCode\Renderer\RendererStyle\GradientType;
 use Da\QrCode\Contracts\ErrorCorrectionLevelInterface;
 use Da\QrCode\Contracts\LabelInterface;
@@ -11,10 +14,10 @@ use Da\QrCode\Writer\JpgWriter;
 use Da\QrCode\Writer\SvgWriter;
 
 
-class QrCodeTest extends \Codeception\Test\Unit
+class QrCodeTest extends Unit
 {
     /**
-     * @var \UnitTester
+     * @var UnitTester
      */
     protected $tester;
 
@@ -80,7 +83,7 @@ class QrCodeTest extends \Codeception\Test\Unit
 
     public function testLogoInvalidPath()
     {
-        $this->expectException('Da\QrCode\Exception\InvalidPathException');
+        $this->expectException(InvalidPathException::class);
 
         (new QrCode(strtoupper('https://steinhaug.no'), ErrorCorrectionLevelInterface::HIGH))
             ->setLogo(codecept_data_dir('testing_logo.png'))
@@ -90,19 +93,19 @@ class QrCodeTest extends \Codeception\Test\Unit
     public function testSetOutputFormat()
     {
         $png = (new QrCode('https://steinhaug.no'))
-            ->setWriter(new \Da\QrCode\Writer\PngWriter())
+            ->setWriter(new PngWriter())
             ->writeString();
 
         $jpeg = (new QrCode('https://steinhaug.no'))
-            ->setWriter(new \Da\QrCode\Writer\JpgWriter())
+            ->setWriter(new JpgWriter())
             ->writeString();
 
         $svg = (new QrCode('https://steinhaug.no'))
-            ->setWriter(new \Da\QrCode\Writer\SvgWriter())
+            ->setWriter(new SvgWriter())
             ->writeString();
 
         $eps = (new QrCode('https://steinhaug.no'))
-            ->setWriter(new \Da\QrCode\Writer\EpsWriter())
+            ->setWriter(new EpsWriter())
             ->writeString();
         file_put_contents(codecept_data_dir('writers/qrcode.eps'), $this->normalizeString($eps));
         $this->tester->assertEquals(file_get_contents(codecept_data_dir('writers/qrcode.png')), $png);

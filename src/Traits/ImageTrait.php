@@ -272,17 +272,11 @@ trait ImageTrait
             $sourceWidth,
             $sourceHeight
         );
-        switch ($labelAlignment) {
-            case LabelInterface::ALIGN_LEFT:
-                $labelX = $labelMargin['l'];
-                break;
-            case LabelInterface::ALIGN_RIGHT:
-                $labelX = $targetWidth - $labelBoxWidth - $labelMargin['r'];
-                break;
-            default:
-                $labelX = (int)($targetWidth / 2 - $labelBoxWidth / 2);
-                break;
-        }
+        $labelX = match ($labelAlignment) {
+            LabelInterface::ALIGN_LEFT => $labelMargin['l'],
+            LabelInterface::ALIGN_RIGHT => $targetWidth - $labelBoxWidth - $labelMargin['r'],
+            default => (int)($targetWidth / 2 - $labelBoxWidth / 2),
+        };
         $labelY = $targetHeight - $labelMargin['b'];
         imagettftext($targetImage, $labelFontSize, 0, $labelX, $labelY, $foregroundColor, $labelFontPath, $labelText);
 

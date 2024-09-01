@@ -11,6 +11,7 @@
 
 namespace Da\QrCode\Format;
 
+use Stringable;
 use Da\QrCode\Contracts\FormatInterface;
 use Da\QrCode\Exception\InvalidCallException;
 use Da\QrCode\Exception\UnknownMethodException;
@@ -23,7 +24,7 @@ use Da\QrCode\Exception\UnknownPropertyException;
  * @link https://2am.tech/
  * @package Da\QrCode\Format
  */
-abstract class AbstractFormat implements FormatInterface
+abstract class AbstractFormat implements FormatInterface, Stringable
 {
     /**
      * Constructor.
@@ -49,7 +50,6 @@ abstract class AbstractFormat implements FormatInterface
 
         $this->init();
     }
-
     /**
      * Returns the value of an object property.
      *
@@ -72,7 +72,6 @@ abstract class AbstractFormat implements FormatInterface
 
         throw new UnknownPropertyException('Getting unknown property: ' . get_class($this) . '::' . $name);
     }
-
     /**
      * Sets value of an object property.
      *
@@ -100,7 +99,6 @@ abstract class AbstractFormat implements FormatInterface
 
         throw new UnknownPropertyException('Setting unknown property: ' . get_class($this) . '::' . $name);
     }
-
     /**
      * Checks if a property is set, i.e. defined and not null.
      *
@@ -123,7 +121,6 @@ abstract class AbstractFormat implements FormatInterface
 
         return false;
     }
-
     /**
      * Calls the named method which is not a class method.
      *
@@ -140,22 +137,19 @@ abstract class AbstractFormat implements FormatInterface
     {
         throw new UnknownMethodException('Calling unknown method: ' . get_class($this) . "::$name()");
     }
-
     /**
      * @return string the string representation of the object
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getText();
     }
-
     /**
      * Initialization method
      */
     public function init(): void
     {
     }
-
     /**
      * Returns a value indicating whether a property is defined.
      * A property is defined if:
@@ -175,7 +169,6 @@ abstract class AbstractFormat implements FormatInterface
     {
         return $this->canGetProperty($name, $checkVars) || $this->canSetProperty($name, false);
     }
-
     /**
      * Returns a value indicating whether a property can be read.
      * A property is readable if:
@@ -194,7 +187,6 @@ abstract class AbstractFormat implements FormatInterface
     {
         return method_exists($this, 'get' . $name) || ($checkVars && property_exists($this, $name));
     }
-
     /**
      * Returns a value indicating whether a property can be set.
      * A property is writable if:
@@ -213,7 +205,6 @@ abstract class AbstractFormat implements FormatInterface
     {
         return method_exists($this, 'set' . $name) || ($checkVars && property_exists($this, $name));
     }
-
     /**
      * Returns a value indicating whether a method is defined.
      *

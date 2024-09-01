@@ -2,6 +2,7 @@
 
 namespace Da\QrCode\Factory;
 
+use Da\QrCode\Exception\InvalidPathException;
 use Da\QrCode\Contracts\QrCodeInterface;
 use Da\QrCode\Enums\Format;
 use Da\QrCode\Format\AbstractFormat;
@@ -171,7 +172,7 @@ class LaravelQrCodeFactory
      * @param int|null $logoSize
      * @param bool|null $scale
      * @return void
-     * @throws \Da\QrCode\Exception\InvalidPathException
+     * @throws InvalidPathException
      */
     protected static function applyLogo(QrCodeInterface $qrCode, ?string $logoPath, ?int $logoSize, ?bool $scale): void
     {
