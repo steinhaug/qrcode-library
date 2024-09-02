@@ -14,7 +14,7 @@
     "authors": [
         {
             "name": "Systemweb.no",
-            "email": "noreply@systemweb.no",
+            "email": "kim@systemweb.no",
             "homepage": "https://systemweb.no",
             "role": "Developer"
         }
@@ -32,23 +32,21 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.2",
         "ext-gd": "*",
         "ext-simplexml": "*",
-        "bacon/bacon-qr-code": "^2.0",
-        "khanamiryan/qrcode-detector-decoder": "^1.0",
+        "khanamiryan/qrcode-detector-decoder": "^2.0",
+        "bacon/bacon-qr-code": "^3.0",
         "marc-mabe/php-enum": "^4.7"
     },
-    "require-dev": {
+    "require-dev_": {
         "roave/security-advisories": "dev-master",
         "friendsofphp/php-cs-fixer": "^2.3",
         "scrutinizer/ocular": "~1.1",
         "squizlabs/php_codesniffer": "*",
-        "phpmd/phpmd": "@stable",
         "codeception/specify": "^0.4.3",
         "codeception/verify": "^0.3.1",
         "codeception/codeception": "*",
-        "yiisoft/yii2": "^2.0",
         "codeception/module-filesystem": "^1.0",
         "codeception/module-yii2": "^1.0",
         "codeception/module-asserts": "2.0.1",
@@ -74,5 +72,10 @@
         "allow-plugins": {
             "yiisoft/yii2-composer": true
         }
+    },
+    "require-dev": {
+        "codeception/module-filesystem": "^3.0",
+        "phpmd/phpmd": "^2.15",
+        "yiisoft/yii2": "^2.0"
     }
 }

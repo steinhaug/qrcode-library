@@ -1,6 +1,9 @@
 # CHANGELOG
 
 
+## 1.1.6
+- Updated composer.
+
 ## 1.1.5 - PHP 8.2
 - Source code has been upgraded for PHP 8.2
 
